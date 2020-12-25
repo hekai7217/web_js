@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if指令</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+<!--
+     01 什么是 v-if指令
+         条件渲染 如果v-if 取值true 就渲染
+     02 v-if 特点
+       如果 条件不满足 就不会创建这个元素
+
+     03 v-if 注意点:
+         v-if 可以从模型中获取数据
+         v-if  也可以直接赋值一个表达式
+     04 v-else 指令,可以和v-if 指令配合使用,当v-if不满足条件的时候就执行v-else 就显示v-else中的内容
+-->
+<div id="app">
+<!--    给  模型中的数据 -->
+    <p v-if="show">我是true</p>
+    <p v-if="hidden">我是false</p>
+<!--    给表达式 -->
+    <p v-if="age > 10">我是大于 10岁</p>
+    <p v-if="age < 15">我是false</p>
+<!--v-if 和 v-else-->
+    <p v-if="age > 18">成年人</p>
+    <p v-else>未成年人</p>
+
+<!--    v-if 和 v-else-if 和 v-else-->
+    <p v-if="score >= 80">优秀</p>
+    <p v-else-if="score >= 60">良好</p>
+    <p v-else>差</p>
+
+
+</div>
+<script>
+    // 开启调试 Vue
+    Vue.config.devtools = true;
+    let vue = new Vue({
+        el:'#app',
+        data:{
+            show:true,
+            hidden:false,
+            age:17,
+            score:50
+        }
+    });
+
+</script>
+</body>
+</html>

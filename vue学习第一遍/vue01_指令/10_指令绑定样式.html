@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令绑定样式</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+      01 如果通过b-bind 给style属性绑定数据
+         1.1 数据放到对象中
+            :style="color:'red','font-size':'50px'"
+
+         1.2 把数据存放到model中
+           obj:{
+              color:"red",
+              'font-size':'80px'
+           }
+
+       02 注意点:
+           如果属性名称包含- 必须用引号括起来
+           如果需要绑定model中多个对象, 可以放到一个数组中
+
+-->
+<div id="app">
+    <!--    js的方式-->
+    <p style="color:red">hello p</p>
+    <!--    和绑定类名一样,默认情况下v-bind 会去model中查找 找不到没有效果 -->
+    <!--    <p :style="color:'red'">hello p</p>-->
+    <!--    只需要把样式放到对象中赋值给style就可以 取值必须使用括号括起来-->
+    <p :style="{color:'red'}"> hello p </p>
+    <!--    样式可以是model中对象 -->
+    <p :style="obj1">hello p</p>
+<!--    如果是多个对象 可以把对象放到数组中-->
+    <p :style="[obj1,obj2]">hello p</p>
+</div>
+
+<script>
+
+    Vue.config.devtools = true;
+
+    let vue = new Vue({
+        el: "#app",
+        data: {
+
+            obj1: {
+                "color": "blue",
+                "font-size": "30px"
+            },
+            obj2:{
+                "background-color":"skyblue"
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

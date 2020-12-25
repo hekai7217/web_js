@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+    01 什么是指令
+       指令就是Vue内部提供的一些自定义属性,
+       这些属性中封装了vue内部实现了一些功能,使用指令可以使用vue的功能
+
+    02 vue数据绑定特点
+        只要 数据发送变化 界面就会跟着变化
+    03 v-once 界面不要跟着数据变化 只会渲染一次
+
+-->
+<div id="app">
+    <p v-once>原始数据{{name}}</p>
+    <p>当前数据{{name}}</p>
+</div>
+
+<script>
+
+    // 开启调试模式
+    Vue.config.devtools = true;
+
+    let vue = new Vue({
+        el:'#app',
+        data:{
+            name:"hello"
+        }
+    })
+
+</script>
+
+</body>
+</html>

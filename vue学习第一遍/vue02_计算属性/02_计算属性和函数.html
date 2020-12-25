@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性和函数区别</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<!--
+    01 计算属性和函数
+       通过计算属性我们可以拿到处理后的数据,通过函数我们也能拿到处理后的数据
+
+    02 有什么区别?
+       2.1 函数不会把计算结果缓存起来, 每次访问都会重写求值
+       2.2 计算属性会结果缓存起来 只要数据没有发生变化 就不会重新求值
+-->
+<div id="app">
+
+<!--    函数-->
+    <p>{{msg1()}}</p>
+    <p>{{msg1()}}</p>
+
+<!--    属性-->
+    <p>{{msg2}}</p>
+    <p>{{msg2}}</p>
+</div>
+
+<script>
+
+    let vue = new Vue({
+
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+            msg1(){
+                console.log("msg1...函数调用了...")
+                return "abc".toUpperCase();
+            }
+        },
+        //属性计算
+        computed:{
+            msg2:function () {
+                console.log("msg2计算属性");
+                return "abc".toUpperCase();
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

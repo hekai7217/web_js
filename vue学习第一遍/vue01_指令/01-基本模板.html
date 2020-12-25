@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue的基本模板</title>
+<!--    01 引入 Vue.js 文件-->
+    <script src="../js/vue.min.js"></script>
+
+</head>
+<body>
+<!--
+     vue的使用步骤:
+      01 导入vue框架
+      02 创建vue 的实例对象
+      03 指定vue实例对象控制的区域
+      04 指定vue实例对象控制区域数据
+-->
+<div id="app">
+    <p>{{name}}</p>
+</div>
+
+<script>
+
+    // 02 创建一个vue实例
+    let vue = new Vue({
+        // 3 告诉vue的实例对象 控制的区域
+        el:'#app',
+        // 告诉vue实例对象,被控制区域的数据是什么
+        data:{
+            name:'张三'
+        }
+    })
+
+</script>
+
+</body>
+</html>

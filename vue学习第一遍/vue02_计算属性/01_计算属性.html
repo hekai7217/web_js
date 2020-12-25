@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+    01 插值语法特点:
+      可以在{{}} 中编写合法的 javascript表达式
+    02 在插入语法中编写javascript表单式特点
+       1.1 没有代码提示
+       1.2 代码不利于维护
+
+    03 如何解决
+         对于复杂的逻辑  可以使用计算属性
+-->
+<div id="app">
+    <p>{{name}}</p>
+    <p>{{age + 1}}</p>
+<!-- msg 属性计算的时候不能在计算属性名称后面加上() 他是一个属性不是一个函数   -->
+    <p>{{msg}}</p>
+</div>
+
+<script>
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            name:'张三',
+            age:18
+        },
+        methods:{
+
+        },
+        // 专门用于定义计算属性
+        computed:{
+
+            //属性计算
+            msg:function () {
+                return "abc".toUpperCase();
+            }
+
+        }
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show指令</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+     01 v-show 指令
+        和v-if指令一样, 都是条件渲染取值为true就显示 取值为false 就不显示
+     02 v-show 和v-if的区别
+         v-if  取值 为false 就不会创建元素
+         v-show 取值为false 也会创建元素
+             只是如果取值是false 会设置元素的display为none
+
+     03 v-if 和v-show的应用场景
+        取值为false   v-if  不会创建元素 如果切换元素显示影藏, 每次都会创建和删除元素
+        取值为false   v-show 会创建元素设置display为none,如果切换元素显示影藏,不会反复创建和删除知识修改display
+        的值
+-->
+<div id="app">
+
+    <p v-if="true">我是true</p>
+    <p v-if="false">我是false</p>
+
+<!--    使用 model中属性-->
+    <p v-show="show">我是true</p>
+    <p v-show="hidden">我是true</p>
+<!-- 可以写表单式 -->
+    <p v-show="age >= 18">我是成年人</p>
+    <p v-show="age < 18">我不是成年人</p>
+
+</div>
+</body>
+
+<script>
+    Vue.config.devtools = true;
+
+    // 创建vue对象
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            show:true,
+            hidden:false,
+            age:18
+        }
+    });
+
+</script>
+
+</html>

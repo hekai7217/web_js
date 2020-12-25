@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<!--
+    01 自定义全局指令
+      在vue中 可以使用vue内置的指令,我们还可以自定义指令
+    02 自定义全局指令的语法:
+        Vue.directive("自定义指令名称",{
+           指令业务逻辑代码;
+        })
+
+    03 指令生命周期方法
+      自定义指令时,一定要明确,指令的业务逻辑代码更适合,在那个阶段执行
+        指令业务逻辑代码中没有用到元素事件,可以在bind阶段执行,
+        指令业务逻辑中没有用到元素事件,就需要在inserted阶段中
+
+    04 自定义指令注意点:
+       使用需要加v- 自定义时候不需要加v-
+-->
+    <div id="app">
+        <p v-color>hello p</p>
+    </div>
+
+<script>
+
+    Vue.config.devtools = true;
+    /**
+     *  directive  方法收2个参数
+     *    01 指令名称,
+     *    02 对象名称
+     *     注意点: 在自定义指令的时候,指定名称的时候,不需要写v-
+     *     注意点: 指令可以在不同的生命周期解决执行
+     *        bind  指令被绑定到元素上的时候执行
+     *        inserted  绑定指令的元素被添加到父元素上的时候执行
+     *
+     */
+    Vue.directive("color",{
+        //el 是被绑定的指令的那个元素
+        bind:function (el) {
+            el.style.color="red";
+        }
+    });
+
+    //创建vue指令
+    let vue = new Vue({
+        el:"#app",
+        data:{
+        },
+        methods:{
+        }
+    });
+
+</script>
+
+</body>
+</html>

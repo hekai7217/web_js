@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind指令</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+     01 什么是v-bind指令
+         要想给元素绑定数据 可以使用 {{}} ,v-text,v-html
+         要给元素属性绑定数据 必须使用v-bind
+      v-bind 的作用是给:元素属性绑定数据
+
+     02 v-bind 格式:
+          v-bind:属性名称="绑定数据"
+          :属性名称="绑定数据"
+
+     03 v-bind特点:
+        赋值数据可以是任意一个合法的js表达式
+         例如:   :属性名称="age + 1"
+-->
+
+<div id="app">
+
+<!--    元素绑定数据-->
+    <p>{{ name }}</p>
+    <p v-text="name"></p>
+    <p v-html="name"></p>
+
+    <input type="text" v-bind:value="name"> <br>
+    <input type="text" :value="name"> <br>
+    <input type="text" :value="age + 1"><br>
+
+
+</div>
+<script>
+
+    Vue.config.devtools = true;
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            name:"张三",
+            age:20
+        }
+    })
+
+</script>
+</body>
+
+</html>

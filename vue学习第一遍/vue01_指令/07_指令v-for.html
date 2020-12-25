@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for指令</title>
+
+    <script src="../js/vue.min.js"></script>
+
+</head>
+<body>
+
+<!--
+      01 什么是v-for 指令
+        和js中的 for in循环一样 可以根据数据多次渲染元素
+      02 v-for
+         可以遍历 数组字符对象
+-->
+
+<div id="app">
+    <ul>
+        <li v-for="(value,key) in list">{{key}} ---> {{value}}</li>
+    </ul>
+
+    <ul>
+        <li v-for="(val,key) in obj">{{key}} ----> {{val}}</li>
+    </ul>
+
+</div>
+
+<script>
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            list:["武汉","上海","广州"],
+            obj:{
+                name:"张三",
+                age:33,
+                gender:"man"
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

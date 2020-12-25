@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义过滤器操作</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+    01 什么是过滤器?
+       过滤器和函数和计算属性一样都是处理数据的
+       过滤器一般用于格式化插入文本数据
+
+    02 如何自定义全局过滤器?
+         Vue.filter("过滤器名称",过滤器处理函数):
+    03 如何使用全局过滤器:
+        {{msg|过滤器名称}}
+        :value="msg|过滤器名称"
+    04 过滤器的注意点:
+         4.1 只能在插值语法和v-bind 中使用
+         4.2 过滤器可以连续使用
+    如何自定义一个全局过滤器:
+         通过 Vue.filter()
+         filter 方法接收2个参数:
+          参数1: 过滤器的名称
+          参数2: 处理数据的函数
+       注意点:
+           默认情况下处理数据的函数接收一个参数 就是当前哟啊处理的数据
+
+   -->
+<div id="app">
+    <p>{{name|formartStr|formartStr2}}</p>
+</div>
+
+<script>
+
+    //创建过滤器
+    Vue.filter("formartStr",function (value) {
+        value=value.replace(/学院/g,"大学")
+        return value;
+    });
+
+    // 创建过滤器2
+    Vue.filter("formartStr2",function (value) {
+        value = value.replace(/大学/g,"幼儿园");
+        return value;
+    });
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            name:"前端学院,java学院"
+        },
+        methods:{
+
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义局部指令</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<!--
+    01 自定义全局指令的特点
+       在任何一个vue实例控制的区域中,都可以使用
+    02 自定义局部指令的特点
+       只能在自定义的那个vue实例中使用
+
+    03 如何自定义一个局部指令
+      给创建Vue实例的传递对象添加
+        directives:{
+            // key  指令名称
+            // value 对象
+            'color':{
+             bind:function(el,obj){
+                  el.style.color=obj.value
+                }
+            }
+        }
+-->
+<div id="app1">
+    <p v-color="'red'">hello p</p>
+</div>
+<div id="app2">
+    <p v-color="'green'">hello p</p>
+</div>
+
+<script>
+
+    //定义全局 指令
+    // Vue.directive("color",{
+    //    bind:function(el,obj){
+    //        el.style.color = obj.value;
+    //    }
+    // });
+    let vue1 = new Vue({
+        el:"#app1",
+        data:{
+
+        },
+        methods:{
+
+        }
+    });
+
+    let vue2 = new Vue({
+        el:"#app2",
+        data:{
+        },
+        methods:{
+        },
+        // 定义局部 指令
+        directives:{
+            'color':function (el,obj) {
+                el.style.backgroundColor = obj.value;
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

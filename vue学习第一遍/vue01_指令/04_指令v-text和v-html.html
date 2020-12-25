@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text和v-html指令</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+        01 v-text  指令
+          和js中的innerText 属性一样
+          v-html 指令
+          和js中的innerHtml 属性一样
+
+        02 插值的方式可以 把指定的数据插入到指定的位置
+           2个指令会覆盖原有的内容
+           v-text 显示文本 不能解析html
+           v-html 显示文本 会解析html
+-->
+
+<div id="app">
+    <p>{{name}}</p>
+    <p>{{msg}}</p>
+
+    <p v-text="name">hello text</p>
+    <p v-html="msg">hello html</p>
+
+</div>
+
+<script>
+   let vue = new Vue({
+       el:'#app',
+       data:{
+           name:"hello",
+           msg:"<h1>hello h</h1>"
+       }
+   })
+</script>
+
+</body>
+</html>
