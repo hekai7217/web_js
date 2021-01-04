@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件的数据传递</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+<!--
+    01 父子组件的数据传递?
+      在vue中,子组件是不能访问父组件的数据,如果子组件要想访问父组件的数据
+      必须通过父组件传递
+    02 如何传递数据?
+       01 在父组件中 通过v-bind 传递数据
+           传递格式: v-bind 自定义接受名称 = "要传递的数据"
+       02 在子组件中通过props 接受数据
+          接受格式: props:["自定义接受名称"]
+
+-->
+<div id="app">
+    <father></father>
+</div>
+
+<!--组定义组件-->
+<template id="father">
+    <div>
+<!--        组件可以使用自己的数据-->
+        <p>{{name}}</p>
+        <p>{{age}}</p>
+        <son :parentname="name" :abc="age"></son>
+    </div>
+</template>
+
+<template id="son">
+    <div>
+<!--    通过父组件 把数据传递给 子组件 -->
+        {{parentname}}
+        {{abc}}
+    </div>
+</template>
+
+<script>
+    //注册组件
+    Vue.component("father",{
+        template:"#father",
+        data:function () {
+            return {
+                name:"战三",
+                age:34
+            }
+        },
+        // 子组件
+        components:{
+            "son":{
+                template: "#son",
+                // 通过 绑定接受 父组件传递过来的数据
+                props:["parentname","abc"]
+            }
+        }
+    })
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        data:{
+
+        },
+        methods:{
+
+        }
+    });
+
+</script>
+</body>
+</html>

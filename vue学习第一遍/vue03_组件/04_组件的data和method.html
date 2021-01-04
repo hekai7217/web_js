@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>data和methods</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+     01 自定义组件中的data和methods
+       vue实际控制的区域相当于一个大组件,在打组件中我们可以使用data和methods
+       而我们自定义的组件也是一个组件,所以在定义组件中也能使用data
+       和methods
+
+     02 自定义组件中data注意点:
+        自定义组件中,不能象vue实例中一样直接使用data,必须是通过
+        返回函数方式来使用data
+-->
+<div id="app">
+<!--    我们是vue实例中使用函数,所以会去vue实例中找有没有对应的方法
+-->
+    <button @click="appFn">我是按钮</button>
+    <p>hello p</p>
+<!--    vue实例控制的区域 系统会去vue实例中找有没有对应的数据 -->
+    <p>{{appMsg}}</p>
+<!--    使用组件 -->
+    <abc></abc>
+</div>
+
+<!--定义一个组件-->
+<template id="info">
+    <div>
+        <img src="../img/a.jpg">
+        <br>
+        <button @click="abcFn">我是按钮</button>
+        <p>{{abcMsg}}</p>
+        <p>{{abcInfo}}</p>
+    </div>
+</template>
+
+<script>
+    //注册组件
+    Vue.component("abc",{
+        template:"#info",
+        // 组件的方法
+        methods: {
+            abcFn(){
+                alert("abcFn");
+            }
+        },
+        // 组件中的数据
+        // 在自定义组件中data必须赋值一个函数,通过函数返回值来定义有哪些数据
+        data:function () {
+            return {
+                abcMsg:"我是组件中的数据msg",
+                abcInfo:"我是组件中的数据info",
+            }
+        }
+    })
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+            appMsg:"我手机vue实例中的数据"
+        },
+        methods:{
+            appFn(){
+                alert("我是appFn");
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+    Vue的2个核心:
+       01 数据驱动界面变化
+       02 组件化
+
+    01 什么是组件 什么是组件化
+       01 把一个很大的界面拆分成很多小界面,每个界面都是一个组件
+       02 将大的界面拆分成小界面就是组件化
+    02 组件化的好处:
+       01 可以简化vue实例的代码
+       02 可以提高代码的复用性
+
+    03 vue中 如何创建组件
+        01 创建组件构造器
+        02 注册已经创建好的组件
+        03 使用注册好的组件
+
+
+-->
+<div id="app">
+<!--    3.3 使用注册好的组件-->
+    <aaa></aaa>
+</div>
+
+<script>
+
+    // 3.1 创建组件构造器
+    let profile = Vue.extend({
+        //创建组件的时候 模板只能有一个根元素
+        template:'<div>\n' +
+            '        <img src="../img/a.jpg">\n' +
+            '        <p>我是p标签</p>\n' +
+            '    </div>'
+    })
+
+    //3.2 注册已经创建好的组件
+    // 参数1: 指定注册组件的名称 :
+    // 参数2: 传入已经创建好的组件对象
+    Vue.component("aaa",profile);
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+
+        },
+        computed:{
+
+        }
+
+    });
+
+
+</script>
+
+</body>
+</html>

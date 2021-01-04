@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+
+<!--
+    01 创建组件的步骤
+      01 创建组件
+      02 注册组件
+      03 使用组件
+    02 创建组件的其他方式:
+       2.1 在注册组件的时候, 可以传入一个组件构造器,还可以传入一个对象
+       2.2 在编写组件模板的时候,可以在字符串模板中编写外,可以像过去art-template 一样在script中编写
+       2.3 在编写组件模板的时候,可以在script中编写 vue还提供了编写模板标签template    
+-->
+<div id="app">
+<!--    使用组件-->
+<!--    <bbb></bbb>-->
+    <ccc></ccc>
+</div>
+
+<!--<script id="info" type="text/html">-->
+<!--    <div>-->
+<!--        <img src="../img/a.jpg">-->
+<!--        <p>我是p标签ccc</p>-->
+<!--    </div>-->
+<!--</script>-->
+
+<!--编写 模板的标签  template  -->
+<template id="info">
+    <div>
+        <img src="../img/a.jpg"/>
+        <p>我是hello p </p>
+    </div>
+</template>
+
+<script>
+    // 提供一个模板对象
+    let obj = {
+        template:'<div>' +
+            '<img src="../img/a.jpg"></img>' +
+            '<p>我是p标签</p>' +
+            '</div>'
+    }
+    //注册组件 添加obj对象
+    // Vue.component("bbb",obj);
+
+    // 注册组件
+    Vue.component("ccc",{
+        template: "#info"
+    });
+
+    let vue = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+
+        },
+        //计算属性
+        computed:{
+
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
